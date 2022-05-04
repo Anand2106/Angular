@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Registration Form<h1>  
+    <div class="col-sm-6">  
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <div class="form-group">
+              <!-- Name -->
+     <div class="form-group row g-3">
+      <label class="title">Name</label>
+              <!-- First Name -->
+       <div class="form-group col-md-6">
+         <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName" [class.is-invalid]="f['FirstName'].invalid && f['FirstName'].touched">
+         <small class="text-danger " *ngIf="f['FirstName'].errors?.['required'] && f['FirstName'].touched"  >FirstName is required</small>
+         <small class="text-danger " *ngIf="f['FirstName'].errors?.['minlength'] && f['FirstName'].touched" >FirstName must be atleast of 3 character</small>
+       </div> 
+              <!-- Last Name -->
+       <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName" [class.is-invalid]="f['LastName'].invalid && f['LastName'].touched">
+        <small class="text-danger " *ngIf="f['LastName'].errors?.['required'] && f['LastName'].touched"  >LastName is required</small>
+       </div> 
+      </div>
+     </div>
+              <!-- Email -->
+    <div class="form-group">
+      <label class="title">Email</label> 
+       <input type="email" class="form-control" placeholder="abc@gmail.com" formControlName="Email"  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" [class.is-invalid]="f['Email'].invalid && f['Email'].touched">
+       <small class="text-danger " *ngIf="f['Email'].errors?.['required'] && f['Email'].touched"  >Email is required</small>
+       <small class="text-danger " *ngIf="f['Email'].errors?.['pattern'] && f['Email'].touched"  >Pattern is wrong</small>
+   </div>
+              <!-- Zipcode -->
+   <div class="form-group">
+    <label class="title">Zipcode</label> 
+    <input type="Zipcode" class="form-control" placeholder="Enter the Zipcode" maxlength="6" formControlName="Zipcode" [class.is-invalid]="f['Zipcode'].invalid && f['Zipcode'].touched">
+    <small class="text-danger " *ngIf="f['Zipcode'].errors?.['required'] && f['Zipcode'].touched"  >Zipcode is required </small> 
+    <small class="text-danger " *ngIf="f['Zipcode'].errors?.['pattern'] && f['Zipcode'].touched"  >Zipcode must contain numeric values only, Eg:600043</small> 
+  </div>
+   <div class="form-group">
+      <label class="title">Password</label>
+      <input formControlName="password" type="password"  class="form-control" placeholder="Enter password" [class.is-invalid]="f['password'].invalid && f['password'].touched" >
+                <!--Error msg for password -->
+     <small class="text-danger" *ngIf="f['password'].errors?.['required'] && f['password'].touched"  >Password is required</small>
+   </div>
+      <button type="submit"  class="btn btn-primary">Submit</button><pre></pre>
+      <input class="btn btn-primary" type="reset" value="Reset">
+    </form>
+    </div>
